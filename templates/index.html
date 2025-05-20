@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DSA Sprint Planning Poker</title>
+    <!-- <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reactions.css') }}">
+
+
+</head>
+<body>
+    <div id="header">
+    <span class="header-title">Sprint Poker</span>
+    <!-- <button id="reset-btn" onclick="resetAll()" style="display:none;">Reset</button> -->
+</div>
+    <div id="login-card" style="max-width:320px;margin:40px auto;padding:18px 18px 12px 18px;box-shadow:0 2px 10px rgba(0,0,0,0.10);border-radius:13px;background:#fff;">
+        <div id="login" style="display:flex;flex-direction:column;gap:10px;">
+            <input id="username" type="text" placeholder="Your name" maxlength="20" style="padding:7px 10px;font-size:15px;border-radius:8px;border:1px solid #ddd;">
+            <button id="join-btn" style="padding:8px;font-size:15px;border-radius:8px;">Join</button>
+            <div id="login-error" class="error" style="font-size:13px;height:20px;"></div>
+        </div>
+    </div>
+    <div id="main-layout" style="display:none">
+    
+        <div id="main-card">
+            <div id="users-table"></div>
+            <div id="emoji-bar" style="text-align:center;margin-bottom:10px;">
+                <button class="fun-btn" onclick="toggleFunEmoji('coffee')" title="Coffee break!">☕️</button>
+                <button class="fun-btn" onclick="toggleFunEmoji('question')" title="I have a question!">❓</button>
+                <button class="fun-btn" onclick="toggleFunEmoji('wc')" title="WC">🚾</button>
+                <button class="fun-btn" onclick="toggleFunEmoji('afk')" title="AFK">💤</button>
+            </div>
+            <div id="score-section">
+                <div class="center-btn">
+                    <button id="start-scoring-btn" onclick="startScoring()">Start Scoring</button>
+                </div>
+                            
+                <div id="scoring" style="display:none">
+                    <div id="score-buttons"></div>
+                    <div id="wait-msg"></div>
+                </div>
+                <div id="countdown"></div>
+                <button id="next-btn" onclick="nextTask()" style="display:none">Next Task</button>
+            </div>
+        </div>
+        <div id="task-panel">
+            <div id="host-controls" style="display:none;">
+                    <input id="new-task" placeholder="Task name" autocomplete="off">
+                    <button id="add-task-btn" onclick="addTask()">Add Task</button>
+                    
+            </div>
+            <h3 class="task-list-title">Task List</h3>
+            <div id="task-list"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script>
+        // Safe, loaded after DOM!
+        document.getElementById('join-btn').onclick = join;
+    </script>
+</body>
+</html>
