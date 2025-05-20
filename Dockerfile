@@ -23,5 +23,5 @@ COPY . .
 # Expose the port (optional/documentation)
 EXPOSE 5000
 
-# Run your app with eventlet
+# Run your app with eventlet2
 CMD ["python", "app.py"]

@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.tar
+*.tar.*
+*.zip
+
+# Node modules
+node_modules/
+
+# Database files
+*.db
+*.sqlite
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+
+# VS Code settings
+.vscode/
+
+# Git
+.git/
+
+# Others
+*.log
