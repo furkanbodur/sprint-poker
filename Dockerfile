@@ -1,4 +1,4 @@
-# Use official Python slim image
+# Use official Python slim image test
 FROM python:3.11-slim
 
 # Ensure logs print instantly
