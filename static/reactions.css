@@ -1,0 +1,70 @@
+.reaction-tooltip {
+    position: absolute;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 32px 0 rgba(80,50,90,0.13);
+    padding: 7px 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    z-index: 9999;
+    animation: fadeInTooltip .19s cubic-bezier(.51,1.54,.46,.96);
+    min-width: 170px;
+    max-width: 95vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+
+@keyframes fadeInTooltip {
+    from { opacity: 0; transform: translateY(10px) scale(.93);}
+    to   { opacity: 1; transform: none;}
+}
+.reaction-emoji-btn {
+    border: none;
+    background: none;
+    font-size: 1.55em;
+    cursor: pointer;
+    transition: transform .13s;
+    outline: none;
+    filter: grayscale(0.07);
+}
+.reaction-emoji-btn:hover {
+    transform: scale(1.25) rotate(-7deg);
+    filter: grayscale(0);
+}
+
+.reaction-fly-emoji {
+    position: absolute;
+    font-size: 2.3em;
+    z-index: 9999;
+    pointer-events: none;
+    will-change: left, top, opacity, transform;
+    transition: opacity .33s, transform .22s;
+    left: 0;
+    top: 0;
+    opacity: 1;
+}
+
+@keyframes cardWobble {
+    0%   { transform: scale(1) rotate(0deg);}
+    18%  { transform: scale(1.13) rotate(-7deg);}
+    40%  { transform: scale(0.96) rotate(6deg);}
+    60%  { transform: scale(1.09) rotate(-4deg);}
+    80%  { transform: scale(0.98) rotate(2deg);}
+    100% { transform: scale(1) rotate(0deg);}
+}
+
+.user-card.wobble-glow {
+    animation: cardWobble 0.7s cubic-bezier(.55,1.5,.65,1.1);
+    box-shadow: 0 0 40px 10px #ffd900, 0 0 0 4px #fff700 !important;
+    outline: 3px solid #fff700 !important;
+    z-index: 10;
+    position: relative;
+}
+
+.user-card.wobble-glow {
+    background: linear-gradient(90deg,#fff70011 0%,#ffd90044 100%) !important;
+    /* ...rest as above... */
+}

@@ -1,0 +1,396 @@
+html, body {
+    background: #f6f7fb;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    margin: 0; padding: 0; min-height: 100vh;
+}
+#main-layout {
+    display: flex;
+    flex-direction: row;
+    max-width: 1080px;
+    margin: 18px auto 0 auto;
+    gap: 24px;
+}
+#header {
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 2px 18px rgba(38,50,56,0.07);
+    padding: 26px 0 22px 0;
+    text-align: center;
+    font-size: 2.5em;
+    color: #7c3aed;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    margin-bottom: 20px;
+    position: relative;  /* ADD THIS */
+    display: flex;       /* ADD THIS */
+    align-items: center; /* ADD THIS */
+    justify-content: center; /* Center the title */
+}
+
+.header-title {
+    flex: 1;
+    text-align: center;
+}
+
+#reset-btn {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.03em;
+    padding: 8px 20px;
+    background: #e11d48;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px 0 rgba(225,29,72,0.11);
+    transition: background 0.18s;
+    z-index: 10;
+}
+#reset-btn:hover {
+    background: #be123c;
+}
+
+#main-card, #login-card {
+    background: #fff;
+    min-width: 380px;
+    flex: 1;
+    border-radius: 24px;
+    box-shadow: 0 2px 24px rgba(38,50,56,0.07);
+    padding: 32px 28px 18px 28px;
+    min-height: 480px;
+}
+#task-panel {
+    background: #f3f4f6;
+    min-width: 240px;
+    max-width: 320px;
+    padding: 22px 20px 22px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 16px rgba(38,50,56,0.06);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+#score-section {
+    background: #f1f5f9;
+    border-radius: 16px;
+    padding: 16px 10px 24px 10px;
+    margin-top: 10px;
+    box-shadow: 0 1px 10px rgba(38,50,56,0.04);
+}
+.desk-label {
+    text-align:center;
+    font-size:1.5em;
+    font-weight:700;
+    color:#7c3aed;
+    margin:10px 0 15px 0;
+}
+input[type="text"] {
+    border: 1px solid #dde2e7;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    width: calc(100% - 34px);
+    background: #f8fafc;
+    outline: none;
+    transition: border-color .2s;
+}
+input[type="text"]:focus {
+    border-color: #7c3aed;
+}
+button {
+    border: none;
+    border-radius: 8px;
+    background: #7c3aed;
+    color: #fff;
+    padding: 9px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, box-shadow .2s;
+    margin: 5px 0;
+    box-shadow: 0 2px 8px 0 rgba(124,58,237,0.08);
+}
+button:disabled {
+    background: #c4b5fd;
+    cursor: default;
+}
+.error {
+    color: #e11d48;
+    margin-top: 4px;
+    font-size: .99em;
+    font-weight: 500;
+}
+#host-controls {
+    margin: 14px 0 6px 0;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+#host-controls input {
+    flex: 1 1 130px;
+    min-width: 90px;
+    margin-bottom: 0;
+}
+#host-controls button {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+}
+#score-buttons button {
+    margin: 7px 7px 5px 0;
+    font-size: 1.2em;
+    min-width: 44px;
+    background: #fff;
+    color: #7c3aed;
+    border: 2px solid #c7d2fe;
+    transition: all .13s;
+}
+#score-buttons button.selected {
+    background: #c7d2fe;
+    color: #4f46e5;
+    border-color: #4f46e5;
+}
+#score-buttons button:hover:not(:disabled) {
+    background: #ede9fe;
+    border-color: #7c3aed;
+    color: #4f46e5;
+}
+#wait-msg {
+    color: #888;
+    font-size: 1.01em;
+    margin: 7px 0;
+    text-align: center;
+}
+#next-btn {
+    display: block;
+    margin: 16px auto 4px auto;
+    width: 80%;
+}
+#users-table {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* This centers the cards! */
+    align-items: flex-end;
+    gap: 16px;
+    margin: 18px 0 12px 0;
+    min-height: 200px;
+    /* REMOVE max-width here! */
+    width: 100%; /* Fill available horizontal space */
+}
+
+.user-card {
+    width: 100px;
+    height: 200px;   /* or your desired consistent height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Or center, if you prefer */
+    background: #ede9fe;
+    border-radius: 16px;
+    box-shadow: 0 3px 14px 0 #ddd8fb69;
+    padding: 16px 10px 10px 10px;
+    font-weight: 500;
+    position: relative;
+    transition: 0.2s;
+    /* Add box-sizing just in case */
+    box-sizing: border-box;
+    overflow: hidden; /* prevents overflow from any content */
+}
+
+.user-card.me {
+    background: #c7d2fe;
+    border: 2px solid #4f46e5;
+    color: #1e293b;
+    z-index: 2;
+    box-shadow: 0 5px 22px 0 #a5b4fc79;
+    transform: scale(1.08);
+}
+.user-card.host::before {
+    content: "👑";
+    font-size: 1.22em;
+    margin-bottom: 2px;
+    display: block;
+}
+.user-card .user-name {
+    max-width: 90px;         /* Same as or slightly less than .user-card width */
+    display: block;
+    white-space: normal;     /* Allow wrapping */
+    overflow-wrap: break-word; /* Break long words if needed */
+    word-break: break-word;     /* Also break in the middle if needed */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.user-card .user-status {
+    font-size: .96em;
+    color: #6d28d9;
+    margin-top: 3px;
+}
+.user-card .user-score {
+    font-size: 1.47em;
+    color: #7c3aed;
+    font-weight: bold;
+    margin-top: 12px;
+    border-radius: 7px;
+    padding: 5px 11px;
+    background: #ede9fe;
+    min-width: 30px;
+    min-height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-card .user-score.me-score {
+    background: #7c3aed;
+    color: #fff;
+}
+.task-list-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.task-list-li {
+    margin: 3px 0 3px 0;
+    background: #fff;
+    border-radius: 7px;
+    padding: 7px 10px 6px 14px;
+    font-size: 1.06em;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.task-list-li.current {
+    background: #ede9fe;
+    color: #7c3aed;
+    font-weight: bold;
+    border-left: 6px solid #7c3aed;
+}
+.task-avg {
+    background: #ede9fe;
+    color: #7c3aed;
+    border-radius: 8px;
+    padding: 2px 8px 2px 8px;
+    font-size: .99em;
+    margin-left: 4px;
+    min-width: 45px;
+    text-align: center;
+}
+.task-list-li .task-delete {
+    cursor:pointer;
+    color:#d90429;
+    font-size:1.25em;
+    margin-left:6px;
+    transition: color 0.15s;
+}
+.task-list-li .task-delete:hover {
+    color: #ff002b;
+}
+.task-list-title {
+    margin: 0 0 10px 0;
+    color: #7c3aed;
+}
+@media (max-width: 850px) {
+    #main-layout {
+        flex-direction: column;
+        max-width: 100vw;
+        gap: 8px;
+    }
+    #main-card, #task-panel {
+        min-width: unset;
+        width: 97vw;
+        margin: 10px auto;
+        box-shadow: none;
+    }
+    #main-card { padding: 18px 8px; }
+    #task-panel { padding: 10px 6px; }
+    #users-table { gap: 8px; }
+}
+@media (max-width: 480px) {
+    #main-card, #login-card, #task-panel {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 8px 1vw 10px 1vw;
+        min-height: 70vh;
+    }
+    button, input {
+        font-size: 1em;
+    }
+    #host-controls {
+        flex-direction: column;
+        gap: 3px;
+    }
+    #next-btn {
+        width: 98%;
+    }
+    #users-table {
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-height: 80px;
+    }
+    .user-card
+    {
+        margin: 6px 2px;
+        min-width: 70px;
+        padding: 10px 5px 7px 5px;
+    }
+}
+#lobby-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#lobby-form input[type="text"] {
+    width: 240px;
+    max-width: 90vw;
+    padding: 8px 12px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 1.5px solid #bbb;
+    margin-bottom: 18px;
+}
+
+#host-controls {
+    margin-bottom: 14px;
+    gap: 5px;
+}
+#host-controls input, #host-controls button {
+    font-size: 1em;
+}
+.center-btn {
+    display: flex;
+    justify-content: center;
+    margin: 14px 0 18px 0;
+}
+
+#reset-btn {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.03em;
+    padding: 8px 20px;
+    background: #e11d48;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px 0 rgba(225,29,72,0.11);
+    transition: background 0.18s;
+    z-index: 10;
+}
+#reset-btn:hover {
+    background: #be123c;
+}
